@@ -1,30 +1,55 @@
 package PIRM15S2;
 
-import java.io.IOException;
-import java.util.Scanner;
+import java.util.ArrayList;
 
-public class PIRM {
-	static boolean keep = true;
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		/*
-		Scanner inpath = new Scanner(System.in);
-		String foodpath = inpath.next();
-		String userpath = inpath.next();
-		String inspath = inpath.next();
-		String logspath = inpath.next();
-		inpath.close();
-		*/
-		String foodpath = args[0];
-		String userpath = args[1];
-		String instructionpath = args[2];
-		String logspath = args[3];
+
+public class Food {
+
+	public double totalprice;
+	public double unitprice;
+	public String offdate;
+	public double quantity;
+	public String type;
+	
+	
+	
+	public Food(String name ,String date, double count, double cost ){
+		offdate = date;
+		totalprice = cost;
+		quantity = count;
+		unitprice = totalprice/quantity;
+		type = name;
+	}
+	
+	public Food(Food a){
+		this.totalprice = a.totalprice;
+		this.unitprice = a.unitprice;
+		this.offdate = a.offdate;
+		this.quantity = a.quantity;
+		this.type =a.type;
+	}
+	
+	public static void copy(Food a, Food b){
 		
-		Function.InstructionInput(foodpath, userpath, instructionpath, logspath);
-		/*
-		for(String s :Function.historyinsgroup){
-			System.out.println(s);
-		}
-		*/
+		a.totalprice = b.totalprice;
+		a.unitprice = b.unitprice;
+		a.offdate = b.offdate;
+		a.quantity = b.quantity;
+		a.type =b.type;
+		
+	}
+	
+	public static void Count (ArrayList<Food> a){
+		
+		int n = a.size();
+		
+		System.out.println("elements of this arryalist is : "+n);
+		
+	}
+	
+	public void ShowValues(){
+		
+		System.out.println(type+" quantity: "+ quantity +" use-by: "+offdate+" unitprice: "+ unitprice);
 	}
 }
+
